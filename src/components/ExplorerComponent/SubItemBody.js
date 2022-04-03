@@ -47,12 +47,12 @@ const getValue = (value) => {
     return value;
 }
 
-function SubItemBody({displayData}) {
+function SubItemBody({displayedData}) {
     const classes = useStyles();
 
     const componentData = useMemo(() => {
-        const dataKeys = Object.keys(displayData);
-        const dataValues = Object.values(displayData);
+        const dataKeys = Object.keys(displayedData);
+        const dataValues = Object.values(displayedData);
         const itemData = dataKeys.reduce((result, keyItem, index) => {
             if(!Array.isArray(dataValues[index]))
                 return [ ...result,
@@ -65,11 +65,11 @@ function SubItemBody({displayData}) {
                 return [...result];
         }, []);
         return itemData;
-    }, [displayData])
+    }, [displayedData])
     
     return (
         <div className={classes.subItemContainer}>
-            <div className={classes.title}>{displayData.name}</div>
+            <div className={classes.title}>{displayedData.name}</div>
             <div className={classes.itemGroup}>
                 {componentData.map(({key, value}) => 
                 <div key={key} className={classes.itemContainer}>
@@ -82,7 +82,7 @@ function SubItemBody({displayData}) {
 };
 
 SubItemBody.propTypes = {
-    displayData: PropTypes.shape({}).isRequired
+    displayedData: PropTypes.shape({}).isRequired
 };
 
 export default memo(SubItemBody);

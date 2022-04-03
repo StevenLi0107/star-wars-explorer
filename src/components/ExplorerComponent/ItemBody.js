@@ -31,10 +31,10 @@ const useStyles = makeStyles(theme =>({
     }
   }));
 
-function ItemBody({displayData, handleItemClick}) {
+function ItemBody({displayedData, handleItemClick}) {
     const classes = useStyles();
     return (<div className={classes.mainContainer}>
-        {displayData.map((displayItem, index) => 
+        {displayedData.map((displayItem, index) => 
         <div key={displayItem.name} className={classes.itemStyle} onClick={() => handleItemClick(index)}>
             <AccountIcon className={classes.iconStyle}/>
             <div className={classes.itemTitleStyle}>{displayItem.name}</div>
@@ -43,7 +43,7 @@ function ItemBody({displayData, handleItemClick}) {
 };
 
 ItemBody.propTypes = {
-    displayData: PropTypes.shape({}).isRequired,
+    displayedData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleItemClick: PropTypes.func.isRequired
 };
 

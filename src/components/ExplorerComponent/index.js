@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function ExplorerComponent({title, componentCategory, handleMainData, handleSubData, displayData, isLoading, errorMessage}) {
+function ExplorerComponent({title, componentCategory, handleMainData, handleSubData, displayedData, isLoading, errorMessage}) {
     const classes = useStyles();
     
     return(
@@ -60,8 +60,8 @@ function ExplorerComponent({title, componentCategory, handleMainData, handleSubD
             <div className={classes.errorMessage}>{errorMessage}</div>:
             <>
               {componentCategory === COMPONENT_CATEGORY.main && <MainBody handleButtonClick={handleMainData}/>}
-              {componentCategory === COMPONENT_CATEGORY.item && <ItemBody displayData={displayData} handleItemClick={handleSubData}/>}
-              {componentCategory === COMPONENT_CATEGORY.subItem && <SubItemBody displayData={displayData}/>}
+              {componentCategory === COMPONENT_CATEGORY.item && <ItemBody displayedData={displayedData} handleItemClick={handleSubData}/>}
+              {componentCategory === COMPONENT_CATEGORY.subItem && <SubItemBody displayedData={displayedData}/>}
             </>
           }
         </div>}
@@ -74,7 +74,10 @@ ExplorerComponent.propTypes = {
   componentCategory: PropTypes.number.isRequired,
   handleMainData: PropTypes.func,
   handleSubData: PropTypes.func,
-  displayData: PropTypes.shape({}),
+  displayedData: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape({})),
+    PropTypes.shape({})
+  ]),
   isLoading: PropTypes.bool,
   errorMessage: PropTypes.string
 };
@@ -82,7 +85,7 @@ ExplorerComponent.propTypes = {
 ExplorerComponent.defaultProps = {
   handleMainData: null,
   handleSubData: null,
-  displayData: {},
+  displayedData: null,
   isLoading: false,
   errorMessage: ''
 }

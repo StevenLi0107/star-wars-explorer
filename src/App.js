@@ -58,11 +58,11 @@ function App() {
           title={mainDataTitle}
           componentCategory={COMPONENT_CATEGORY.item} 
           handleSubData={handleSubData} 
-          displayData={mainData}/>}
+          displayedData={mainData}/>}
         {subData && <ExplorerComponent 
           title={mainDataTitle}
           componentCategory={COMPONENT_CATEGORY.subItem} 
-          displayData={subData}/>}
+          displayedData={subData}/>}
       </div>
     </MuiThemeProvider>
   );
