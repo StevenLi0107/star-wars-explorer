@@ -20,7 +20,7 @@ export const COMPONENT_CATEGORY = {
   subItem: 2
 };
 export const COMPONENT_SIZE = {
-    width: '300px',
+    width: '400px',
     height:'700px'
 };
 export const FORE_COLOR = '#2C3EF6';
